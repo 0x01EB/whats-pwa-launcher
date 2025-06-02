@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhatsApp Web Launcher</title>
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#075E54">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+            text-align: center;
+        }
+        .container {
+            padding: 20px;
+            border-radius: 8px;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+        }
+        p {
+            color: #666;
+        }
+        .instructions {
+            margin-top: 20px;
+            font-size: 0.9em;
+            color: #888;
+        }
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>WhatsApp Web Launcher PWA</h1>
+        <p>This PWA is designed to launch WhatsApp Web.</p>
+        <p>If installed, it should appear as an app icon on your home screen.</p>
+        <p>The actual functionality will depend on your browser's ability to run web.whatsapp.com.</p>
+        <p class="instructions">
+            Once loaded, try to find the "Add to Home Screen" or "Install App" option in your Chrome browser menu to install this PWA.
+        </p>
+        <p>
+            You can also <a href="https://web.whatsapp.com/" target="_blank">click here</a> to open WhatsApp Web directly in a new tab.
+        </p>
+    </div>
+
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js')
+                    .then(registration => {
+                        console.log('Service Worker registered with scope:', registration.scope);
+                    })
+                    .catch(error => {
+                        console.log('Service Worker registration failed:', error);
+                    });
+            });
+        }
+    </script>
+</body>
+</html>
